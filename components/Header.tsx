@@ -6,13 +6,13 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { Session } from "next-auth";
-import dayjs from 'dayjs';
-import 'dayjs/locale/th';
+import dayjs from "dayjs";
+import "dayjs/locale/th";
 
 const Header = ({ session }: { session: Session }) => {
   const pathname = usePathname();
   const [currentTime, setCurrentTime] = React.useState(dayjs());
-  
+
   React.useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(dayjs());
@@ -22,8 +22,8 @@ const Header = ({ session }: { session: Session }) => {
   }, []);
 
   // Set locale to Thai
-  dayjs.locale('th');
-  
+  dayjs.locale("th");
+
   return (
     <header className="flex justify-between gap-5 my-10">
       <Link href="/" className="">
@@ -40,8 +40,8 @@ const Header = ({ session }: { session: Session }) => {
             )}
           >
             <div className="font-medium text-lg">
-                {currentTime.format('HH:mm:ss')}
-              </div>
+              {currentTime.format("HH:mm:ss")}
+            </div>
           </Link>
         </li>
 
@@ -50,7 +50,6 @@ const Header = ({ session }: { session: Session }) => {
             <Avatar>
               <AvatarFallback className="bg-amber-100">
                 {getInitials(session?.user?.name || "IN")}
-                
               </AvatarFallback>
             </Avatar>
           </Link>
