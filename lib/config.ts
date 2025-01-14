@@ -1,6 +1,7 @@
 const config = {
     env: {
         apiEndpoint: process.env.NEXT_PUBLIC_API_ENDPOINT!,
+        prodApiEndpoint: process.env.NEXT_PUBLIC_PROD_API_ENDPOINT!,
         imagekit: {
             publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!,
             urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!,
@@ -12,8 +13,8 @@ const config = {
             redisToken: process.env.UPSTASH_REDIS_TOKEN!,
             qstashUrl: process.env.QSTASH_URL!,
             qstashToken: process.env.QSTASH_TOKEN!,
-
-        }
+        },
+        resendToken:process.env.RESEND_TOKEN!,
     },
 };
 
@@ -26,3 +27,4 @@ export default config;
 
 // QSTASH_CURRENT_SIGNING_KEY="sig_6p3jcvRTe1yGaGUKjbxjCJRkBSpT"
 // QSTASH_NEXT_SIGNING_KEY="sig_4oAZooDQt3VrnmkxePaNdKSkzLmo"
+

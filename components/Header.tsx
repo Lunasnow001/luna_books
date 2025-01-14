@@ -6,9 +6,24 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { Session } from "next-auth";
+import dayjs from 'dayjs';
+import 'dayjs/locale/th';
 
 const Header = ({ session }: { session: Session }) => {
   const pathname = usePathname();
+  const [currentTime, setCurrentTime] = React.useState(dayjs());
+  
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(dayjs());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  // Set locale to Thai
+  dayjs.locale('th');
+  
   return (
     <header className="flex justify-between gap-5 my-10">
       <Link href="/" className="">
@@ -24,7 +39,9 @@ const Header = ({ session }: { session: Session }) => {
               pathname === "/library" ? "text-light-200-200" : "text-light-100"
             )}
           >
-            Library
+            <div className="font-medium text-lg">
+                {currentTime.format('HH:mm:ss')}
+              </div>
           </Link>
         </li>
 
